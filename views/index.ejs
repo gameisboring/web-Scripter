@@ -5,14 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= title %></title>
-
+    <link rel="stylesheet" href="stylesheets/style.css" />
     <script src="/socket.io/socket.io.js"></script>
   </head>
   <body>
-    <form id="form">
-      <input type="text" placeholder="내용을 입력하세요" id="input" />
-      <input type="submit" value="OK" />
-    </form>
+    <div class="w-480 mx-auto">
+      <form id="TextForm" class="formBox">
+        <input
+          type="text"
+          id="TextInput"
+          placeholder="내용을 입력하세요"
+          onkeydown="enterPress(event)"
+        />
+        <input type="submit" value="OK" id="textSubBtn" />
+      </form>
+    </div>
+    <div class="w-480 mx-auto">
+      <form id="ConfigForm" class="formBox">
+        <label for="ConfigFontSize">크기</label>
+        <input type="number" name="fontSize" id="ConfigFontSize" />
+        <label for="ConfigFontWeight">굵기</label>
+        <input type="number" name="fontWeight" id="ConfigFontWeight" />
+        <label for="ConfigFontColor">색상</label>
+        <input list="font-colors" id="ConfigFontColor" name="fontColor" />
+
+        <datalist id="font-colors">
+          <option value="black"></option>
+          <option value="silver"></option>
+          <option value="red"></option>
+          <option value="blue"></option>
+          <option value="green"></option>
+        </datalist>
+
+        <input type="submit" value="설정값 저장" />
+      </form>
+    </div>
   </body>
   <script src="javascripts/index.js"></script>
 </html>

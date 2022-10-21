@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+    format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.videoBackgroundBox {
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+  margin: 0px;
+  position: relative;
+}
+
+video {
+  object-fit: cover;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  bottom: 55%;
+  color: #fff;
+  text-align: center;
+}
+
+.textBox .winnerText {
+  font-size: 24px;
+  font-family: Pretendard-Regular;
+  font-weight: 600;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 0.3);
+  transition: all 2s cubic-bezier(1, 0, 1, 0.5);
+  display: none;
+}
+
+.textBox .winnerNumber {
+  color: #ff7057;
+}
+
+.textBox button {
+  margin: -50px auto 0px auto;
+  padding: 20px 50px;
+  border: 0;
+  border-radius: 50px;
+  background-color: #5757ff;
+  transition: all 0.3s cubic-bezier(0.17, -0.48, 0.83, -0.09);
+
+  font-size: 48px;
+  font-weight: 400;
+  font-family: 'Pretendard-Regular';
+  color: #fff;
+}
+
+.textBox button:hover {
+  background-color: #ff7057;
+  cursor: pointer;
+  transform: translateY(-10px);
+}
+
+.ctrlBox {
+  display: none;
+  position: absolute;
+  bottom: 7.5%;
+  left: 90%;
+}
+
+.ctrlBox .retryBtn {
+  width: 80px;
+  background-color: #5757ff;
+  padding: 20px;
+  border-radius: 50%;
+  transition: all 0.2s ease-in;
+}
+
+.ctrlBox .retryBtn:hover {
+  background-color: #ff7057;
+  transform: rotate(30deg);
+  cursor: pointer;
+}

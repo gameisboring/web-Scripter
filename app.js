@@ -28,12 +28,17 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 /* GET home page. */
 app.get('/', function (req, res, next) {
-  res.render('index', { title: 'Express' })
+  res.render('index', { title: '자막 입력 페이지' })
 })
 
 /* GET script page. */
 app.get('/script', function (req, res, next) {
-  res.render('script', { title: 'Script' })
+  res.render('script', { title: '자막 표시 페이지' })
+})
+
+/* GET raffle page. */
+app.get('/raffle', function (req, res, next) {
+  res.render('raffle', { title: '추첨 페이지' })
 })
 
 // catch 404 and forward to error handler

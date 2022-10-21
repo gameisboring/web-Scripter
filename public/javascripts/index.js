@@ -1,12 +1,32 @@
 var socket = io()
 
-var form = document.getElementById('form')
-var input = document.getElementById('input')
+var textForm = document.getElementById('TextForm')
+var configForm = document.getElementById('ConfigForm')
+var configFormInputs = document.querySelectorAll('#ConfigForm > input')
+var textInput = document.getElementById('TextInput')
+var textSubmit = document.getElementById('textSubBtn')
 
-form.addEventListener('submit', function (e) {
+textForm.addEventListener('submit', (e) => {
   e.preventDefault()
-  if (input.value) {
-    socket.emit('chat message', input.value)
-    input.value = ''
+  if (textInput.value) {
+    socket.emit('input message', textInput.value)
+    textInput.value = ''
+  }
+})
+
+configForm.addEventListener('submit', (e) => {
+  e.preventDefault()
+  for (var i = 0; i < configFormInputs.length - 1; i++) {
+    var name = configFormInputs[i].name
+    var value = configFormInputs[i].value
+    data = { name: value }
+    formData.push(data)
+  }
+  socket.emit('save config', formData)
+})
+
+textInput.addEventListener('keypress', (e) => {
+  if (e.keyCode == 13) {
+    textSubmit.click()
   }
 })

@@ -1,10 +1,19 @@
-* {
+body {
+  margin: 0;
+}
+
+.scriptBox {
   width: 1920px;
   height: 1080px;
   overflow: hidden;
+  background-color: antiquewhite;
 }
 
 #mainScript {
-  font-size: 36px;
+  position: relative;
+  font-size: 59px;
   text-align: center;
+  top: 850px;
+  font-weight: 700;
+  text-shadow: 3px 3px 4px #9b9b9b;
 }
