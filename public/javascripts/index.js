@@ -16,13 +16,14 @@ textForm.addEventListener('submit', (e) => {
 
 configForm.addEventListener('submit', (e) => {
   e.preventDefault()
+  const configData = new Object()
+
   for (var i = 0; i < configFormInputs.length - 1; i++) {
     var name = configFormInputs[i].name
     var value = configFormInputs[i].value
-    data = { name: value }
-    formData.push(data)
+    configData[name] = value
   }
-  socket.emit('save config', formData)
+  socket.emit('save config', configData)
 })
 
 textInput.addEventListener('keypress', (e) => {
