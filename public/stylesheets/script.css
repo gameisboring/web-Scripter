@@ -6,7 +6,7 @@ body {
   width: 1920px;
   height: 1080px;
   overflow: hidden;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
 }
 
 #mainScript {
@@ -15,5 +15,5 @@ body {
   text-align: center;
   top: 850px;
   font-weight: 700;
-  text-shadow: 3px 3px 4px #9b9b9b;
+  /* text-shadow: 3px 3px 4px #9b9b9b; */
 }

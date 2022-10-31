@@ -16,22 +16,22 @@ a {
   flex-direction: column;
 }
 
-.formBox {
+.form {
   display: flex;
-  margin-top: 15px;
+  margin: 15px auto 0px auto;
   flex-direction: column;
   font: 15px 'Lucida Grande', Helvetica, Arial, sans-serif;
   color: grey;
   box-shadow: 0px 0px 15px rgb(182, 182, 182);
-
-  padding: 50px 60px;
+  padding: 35px 45px;
   border-radius: 17px;
+  max-width: 960px;
 }
 
-.formBox input {
+.form input {
   font-size: 20px;
   text-align: center;
-  width: 360px;
+  width: 100%;
   margin: 5px auto 15px auto;
   padding: 10px 0px;
   border: 0;
@@ -39,7 +39,7 @@ a {
   background-color: rgb(227, 239, 255);
 }
 
-.formBox input[type='submit'] {
+.form input[type='submit'] {
   border: 0;
   font-size: 15px;
   border-radius: 25px;
@@ -50,16 +50,20 @@ a {
   margin: 15px auto 0 auto;
 }
 
-.formBox input[type='submit']:hover {
+.form input[type='submit']:hover {
   background-color: #aabaff;
   color: #1e3eca;
   cursor: pointer;
 }
 
-.w-480 {
-  width: 480px;
+.inputBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 15px;
 }
 
-.mx-auto {
-  margin: 0 auto;
+.configBox .input {
+  flex-grow: 1;
+  flex-basis: 40%;
 }

@@ -2,7 +2,8 @@ var socket = io()
 
 var textForm = document.getElementById('TextForm')
 var configForm = document.getElementById('ConfigForm')
-var configFormInputs = document.querySelectorAll('#ConfigForm > input')
+var configFormInputs = document.querySelectorAll('#ConfigForm input')
+
 var textInput = document.getElementById('TextInput')
 var textSubmit = document.getElementById('textSubBtn')
 
@@ -16,12 +17,16 @@ textForm.addEventListener('submit', (e) => {
 
 configForm.addEventListener('submit', (e) => {
   e.preventDefault()
-  const configData = new Object()
+  const configData = new Array()
 
   for (var i = 0; i < configFormInputs.length - 1; i++) {
     var name = configFormInputs[i].name
     var value = configFormInputs[i].value
-    configData[name] = value
+    console.log(value)
+    console.log(typeof value)
+    if (value != '') {
+      configData.push({ name: name, value: value })
+    }
   }
   socket.emit('save config', configData)
 })

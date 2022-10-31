@@ -43,11 +43,14 @@ retryBtn.addEventListener('click', () => {
 
 /**
  * 중복없는 정수 배열을 반환합니다
- * @param {Number} length
- * @param {Number} range
+ * @param {Number} length 반환하는 배열의 길이
+ * @param {Number} range 반환할 정수의 범위
  * @returns numbers
  */
 function raffleNumExtracter(length, range) {
+  // const array = new Uint32Array(length)
+  // self.crypto.getRandomValues(array)
+
   let numbers = []
   let i = 0
   while (i < length) {

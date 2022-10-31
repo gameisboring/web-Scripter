@@ -28,17 +28,17 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 /* GET home page. */
 app.get('/', function (req, res, next) {
-  res.render('index', { title: '자막 입력 페이지' })
+  res.sendFile(__dirname + '/views/index.html')
 })
 
 /* GET script page. */
 app.get('/script', function (req, res, next) {
-  res.render('script', { title: '자막 표시 페이지' })
+  res.sendFile(__dirname + '/views/script.html')
 })
 
 /* GET raffle page. */
 app.get('/raffle', function (req, res, next) {
-  res.render('raffle', { title: '추첨 페이지' })
+  res.sendFile(__dirname + '/views/raffle.html')
 })
 
 // catch 404 and forward to error handler
@@ -54,7 +54,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500)
-  res.render('error')
+  res.sendFile(__dirname + '/views/error.html')
 })
 
 module.exports = app
