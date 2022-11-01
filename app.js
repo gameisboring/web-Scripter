@@ -36,6 +36,8 @@ app.get('/script', function (req, res, next) {
   res.sendFile(__dirname + '/views/script.html')
 })
 
+app.get('/script/data', function (req, res) {})
+
 /* GET raffle page. */
 app.get('/raffle', function (req, res, next) {
   res.sendFile(__dirname + '/views/raffle.html')

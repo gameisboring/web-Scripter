@@ -6,14 +6,24 @@ body {
   width: 1920px;
   height: 1080px;
   overflow: hidden;
+  text-align: center;
   /* background-color: antiquewhite; */
 }
 
 #mainScript {
-  position: relative;
+  color: white;
+  /* position: relative; */
   font-size: 59px;
-  text-align: center;
-  top: 850px;
+  /* top: 850px; */
   font-weight: 700;
   /* text-shadow: 3px 3px 4px #9b9b9b; */
+}
+
+.scriptBackground {
+  background-color: rgba(0, 0, 0, 0.8);
+  position: relative;
+  top: 950px;
+  width: max-content;
+  padding: 0 2rem;
+  margin: 0 auto;
 }

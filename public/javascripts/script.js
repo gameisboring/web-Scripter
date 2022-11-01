@@ -5,6 +5,7 @@ const mainScript = document.querySelector('#mainScript')
 socket.on('input message', (msg) => {
   mainScript.innerText = msg
 })
+
 socket.on('save config', (data) => {
   var i = 0
   while (i < data.length) {

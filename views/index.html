@@ -17,7 +17,12 @@
           placeholder="내용을 입력하세요"
           onkeydown="enterPress(event)"
         />
-        <input type="submit" value="OK" id="textSubBtn" />
+        <div class="buttonBox">
+          <input type="submit" value="OK" id="textSubBtn" class="formButton" />
+          <button type="button" id="cancleScriptBtn" class="formButton">
+            자막 취소
+          </button>
+        </div>
       </form>
     </div>
     <div class="configBox">
@@ -85,7 +90,12 @@
             />
           </div> -->
         </div>
-        <input type="submit" value="설정값 저장" id="configSubBtn" />
+        <input
+          type="submit"
+          value="설정값 저장"
+          id="configSubBtn"
+          class="formButton"
+        />
       </form>
     </div>
   </body>

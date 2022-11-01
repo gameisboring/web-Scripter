@@ -7,6 +7,8 @@ var configFormInputs = document.querySelectorAll('#ConfigForm input')
 var textInput = document.getElementById('TextInput')
 var textSubmit = document.getElementById('textSubBtn')
 
+var cancleScriptBtn = document.querySelector('#cancleScriptBtn')
+
 textForm.addEventListener('submit', (e) => {
   e.preventDefault()
   if (textInput.value) {
@@ -35,4 +37,8 @@ textInput.addEventListener('keypress', (e) => {
   if (e.keyCode == 13) {
     textSubmit.click()
   }
+})
+
+cancleScriptBtn.addEventListener('click', (e) => {
+  console.log('cancle Button clicked')
 })
