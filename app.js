@@ -15,11 +15,11 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 
 // helmet middleware
-app.use(helmet.contentSecurityPolicy())
+// app.use(helmet.crossOriginResourcePolicy('same-site'))
 app.use(helmet.hidePoweredBy())
-app.use(helmet.xssFilter())
-app.use(helmet.noSniff())
-app.use(helmet.frameguard())
+// app.use(helmet.xssFilter())
+// app.use(helmet.noSniff())
+// app.use(helmet.frameguard())
 
 app.use(logger('dev'))
 app.use(express.json())

@@ -5,8 +5,8 @@
   "main": "./bin/www",
   "scripts": {
     "dev": "nodemon ./bin/www",
-    "start": "node ./dist/bundle.js",
-    "webpack": "webpack --mode development"
+    "start": "node ./bin/www",
+    "build": "babel src -d dist"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
