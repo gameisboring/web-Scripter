@@ -1,9 +1,30 @@
 var socket = io()
-
 const mainScript = document.querySelector('#mainScript')
 
+fetch('/script/data', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+  .then((response) => response.json())
+  .then((data) => {
+    console.log(data)
+    mainScript.innerText = data.text
+  })
+
 socket.on('input message', (msg) => {
+  console.log('input message')
   mainScript.innerText = msg
+})
+
+socket.on('toggle', (msg) => {
+  console.log(msg)
+  if (msg === 'hide') {
+    mainScript.parentNode.style.opacity = 0
+  } else if (msg === 'show') {
+    mainScript.parentNode.style.opacity = 100
+  }
 })
 
 socket.on('save config', (data) => {

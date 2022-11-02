@@ -4,6 +4,7 @@ var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
 const helmet = require('helmet')
+const models = require('./models')
 
 var app = express()
 
@@ -36,7 +37,23 @@ app.get('/script', function (req, res, next) {
   res.sendFile(__dirname + '/views/script.html')
 })
 
-app.get('/script/data', function (req, res) {})
+app.get('/script/data', async function (req, res) {
+  const data = await models.Script.findOne({
+    order: [['updatedAt', 'DESC']],
+  })
+
+  data ? res.send(data) : console.log('Not found !')
+})
+
+app.post('/script/data', function (req, res) {
+  models.Script.create({
+    author: req.body.author,
+    text: req.body.text,
+  }).then(() => {
+    console.log('data is created !')
+    res.json({ staus: 200, ok: true })
+  })
+})
 
 /* GET raffle page. */
 app.get('/raffle', function (req, res, next) {

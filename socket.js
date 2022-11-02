@@ -14,5 +14,10 @@ module.exports = (io) => {
       console.log('config data from script.ejs', data)
       io.emit('save config', data)
     })
+
+    socket.on('toggle', (msg) => {
+      console.log(msg)
+      io.emit('toggle', msg)
+    })
   })
 }

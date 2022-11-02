@@ -11,16 +11,19 @@
   <body>
     <div class="">
       <form id="TextForm" class="form">
-        <input
-          type="text"
-          id="TextInput"
-          placeholder="내용을 입력하세요"
-          onkeydown="enterPress(event)"
-        />
+        <input type="text" id="TextInput" placeholder="내용을 입력하세요" />
         <div class="buttonBox">
           <input type="submit" value="OK" id="textSubBtn" class="formButton" />
           <button type="button" id="cancleScriptBtn" class="formButton">
             자막 취소
+          </button>
+          <button
+            type="button"
+            id="showScriptBtn"
+            class="formButton"
+            style="display: none"
+          >
+            자막 보이기
           </button>
         </div>
       </form>
