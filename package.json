@@ -5,7 +5,7 @@
   "main": "./bin/www",
   "scripts": {
     "dev": "nodemon ./bin/www",
-    "start": "node ./bin/www",
+    "start": "PORT=80 node ./bin/www",
     "build": "babel src -d dist"
   },
   "dependencies": {
@@ -33,7 +33,7 @@
     "webpack-cli": "^4.10.0",
     "webpack-remove-debug": "^0.1.0"
   },
-  "description": "Real-time caption generator",
+  "description": "Real-time caption script generator",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/gameisboring/web-Scripter.git"

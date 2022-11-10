@@ -11,7 +11,12 @@
   <body>
     <div class="">
       <form id="TextForm" class="form">
-        <input type="text" id="TextInput" placeholder="내용을 입력하세요" />
+        <input
+          type="text"
+          id="TextInput"
+          placeholder="내용을 입력하세요"
+          class="textInput"
+        />
         <div class="buttonBox">
           <input type="submit" value="OK" id="textSubBtn" class="formButton" />
           <button type="button" id="cancleScriptBtn" class="formButton">
@@ -30,6 +35,7 @@
     </div>
     <div class="configBox">
       <form id="ConfigForm" class="form">
+        <h2>자막 설정</h2>
         <div class="inputBox">
           <div class="input">
             <label for="ConfigFontSize">크기</label>
@@ -38,6 +44,7 @@
               name="fontSize"
               id="ConfigFontSize"
               placeholder="ex) 56px"
+              class="textInput"
             />
           </div>
           <div class="input">
@@ -47,6 +54,7 @@
               name="fontWeight"
               id="ConfigFontWeight"
               placeholder="ex) 600"
+              class="textInput"
             />
           </div>
           <div class="input">
@@ -56,15 +64,9 @@
               id="ConfigColor"
               name="color"
               placeholder="ex) #000"
+              class="textInput"
             />
           </div>
-          <datalist id="font-colors">
-            <option value="black"></option>
-            <option value="silver"></option>
-            <option value="red"></option>
-            <option value="blue"></option>
-            <option value="green"></option>
-          </datalist>
           <div class="input">
             <label for="ConfigFontBorderWidth">테두리 굵기</label>
             <input
@@ -72,31 +74,71 @@
               name="borderWidth"
               id="ConfigFontBorderWidth"
               placeholder="ex) 3"
+              class="textInput"
             />
           </div>
-          <!-- <div class="input">
-            <label for="ConfigFontWeight">테두리 색상</label>
-            <input
-              type="text"
-              name="borderColor"
-              id="ConfigFontBorderColor"
-              placeholder="ex) #000"
-            />
-          </div> -->
-          <!-- <div class="input">
-            <label for="ConfigFontBorderColor">글꼴</label>
-            <input
-              type="text"
-              name="fontFamily"
-              id="ConfigFontBorderColor"
-              placeholder="ex) Pretendard-Regular"
-            />
-          </div> -->
         </div>
         <input
           type="submit"
           value="설정값 저장"
           id="configSubBtn"
+          class="formButton"
+        />
+      </form>
+    </div>
+    <div class="configBox">
+      <form id="ConfigRaffleForm" class="form">
+        <h2>추첨 설정</h2>
+        <div class="inputBox">
+          <div class="radioInputBox">
+            <span> 음소거 </span>
+            <div>
+              <input
+                type="radio"
+                id="OFF"
+                name="useSound"
+                value="false"
+                class="radioInput"
+                checked
+              />
+              <label for="OFF">OFF</label>
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="ON"
+                name="useSound"
+                value="true"
+                class="radioInput"
+              />
+              <label for="ON">ON</label>
+            </div>
+          </div>
+          <div class="input">
+            <label for="ConfigRaffleRange">추첨 범위</label>
+            <input
+              type="number"
+              name="range"
+              id="ConfigRaffleRange"
+              placeholder="ex) 100 (1 부터 입력범위 까지)"
+              class="textInput"
+            />
+          </div>
+          <div class="input">
+            <label for="ConfigRaffleLength">추첨 개수</label>
+            <input
+              type="number"
+              name="length"
+              id="ConfigRaffleLength"
+              placeholder="ex) 6개"
+              class="textInput"
+            />
+          </div>
+        </div>
+        <input
+          type="submit"
+          value="설정값 저장"
+          id="configRaffleSubBtn"
           class="formButton"
         />
       </form>

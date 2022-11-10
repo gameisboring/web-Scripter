@@ -27,17 +27,24 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
-/* GET home page. */
-app.get('/', function (req, res, next) {
+/*
+ * GET 홈페이지
+ */
+app.get('/', (req, res, next) => {
   res.sendFile(__dirname + '/views/index.html')
 })
 
-/* GET script page. */
-app.get('/script', function (req, res, next) {
+/**
+ * GET 스크립트가 표시되는 화면
+ */
+app.get('/script', (req, res, next) => {
   res.sendFile(__dirname + '/views/script.html')
 })
 
-app.get('/script/data', async function (req, res) {
+/**
+ * GET 스크립트 데이터 뿌려주기
+ */
+app.get('/script/data', async (req, res) => {
   const data = await models.Script.findOne({
     order: [['updatedAt', 'DESC']],
   })
@@ -45,19 +52,54 @@ app.get('/script/data', async function (req, res) {
   data ? res.send(data) : console.log('Not found !')
 })
 
-app.post('/script/data', function (req, res) {
-  models.Script.create({
-    author: req.body.author,
-    text: req.body.text,
-  }).then(() => {
-    console.log('data is created !')
-    res.json({ staus: 200, ok: true })
-  })
+/**
+ * POST 스크립트 데이터 입력
+ */
+app.post('/script/data', (req, res) => {
+  if (req.body.author && req.body.text) {
+    models.Script.create({
+      author: req.body.author,
+      text: req.body.text,
+    }).then(() => {
+      console.log(`데이터 입력 | ${author} / ${text}`)
+      res.json({ staus: 200, ok: true })
+    })
+  }
+
+  res.status(500).send('예측하지 못한 데이터')
 })
 
-/* GET raffle page. */
-app.get('/raffle', function (req, res, next) {
+/* GET 추첨 페이지 */
+app.get('/raffle', (req, res) => {
   res.sendFile(__dirname + '/views/raffle.html')
+})
+
+/**
+ * GET 추첨 페이지 설정 가져오기
+ */
+app.get('/raffle/config', async (req, res) => {
+  const data = await models.Raffle.findOne({
+    order: [['updatedAt', 'DESC']],
+  })
+  res.send(data)
+})
+
+/**
+ * POST 추첨 페이지 설정 입력
+ */
+app.post('/raffle/config', async (req, res) => {
+  console.log(req.body)
+  if (req.body.length && req.body.range && req.body.useSound) {
+    console.log(req.body)
+    const [instance, created] = await models.Raffle.upsert({
+      useSound: req.body.useSound,
+      numLength: req.body.length,
+      numRange: req.body.range,
+    })
+    if (created) {
+      res.json({ staus: 200, ok: true })
+    }
+  }
 })
 
 // catch 404 and forward to error handler
