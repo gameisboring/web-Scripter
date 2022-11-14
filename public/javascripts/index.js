@@ -76,9 +76,9 @@ raffleConfigForm.addEventListener('submit', async (e) => {
     }
   }
   // 난수 생성 범위
-  data.range = document.getElementById('ConfigRaffleRange').value
+  data.range = Number(document.getElementById('ConfigRaffleRange').value)
   // 난수 생성 갯수
-  data.length = document.getElementById('ConfigRaffleLength').value
+  data.length = Number(document.getElementById('ConfigRaffleLength').value)
 
   if (data.range < data.length) {
     alert('추첨 개수는 추첨 범위 내의 자연수의 개수보다 많을 수 없습니다')
@@ -118,4 +118,9 @@ textInput.addEventListener('keypress', (e) => {
   if (e.keyCode == 13) {
     textSubmit.click()
   }
+})
+
+socket.on('send numbers', (data) => {
+  document.querySelector('#randomNumbs').innerText = '생성된 당첨번호 : ' + data
+  console.log(data)
 })

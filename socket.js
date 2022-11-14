@@ -19,5 +19,10 @@ module.exports = (io) => {
       console.log(msg)
       io.emit('toggle', msg)
     })
+
+    socket.on('send numbers', (msg) => {
+      console.log('socket send numbers ', msg)
+      io.emit('send numbers', msg)
+    })
   })
 }

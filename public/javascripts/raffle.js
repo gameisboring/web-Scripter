@@ -5,6 +5,8 @@ const winnerNumber = document.querySelector('.textBox .winnerNumber')
 const controlBox = document.querySelector('.ctrlBox')
 const retryBtn = document.querySelector('.ctrlBox .retryBtn')
 
+var socket = io()
+
 var raffleTime = 0
 document.addEventListener('DOMContentLoaded', async () => {
   const numbers = await raffleNumExtracter()
@@ -51,6 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
+        socket.emit('send numbers', data)
         return data
       })
     return randomNumbs
