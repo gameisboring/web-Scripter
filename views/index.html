@@ -11,12 +11,15 @@
   <body>
     <div class="">
       <form id="TextForm" class="form">
-        <input
-          type="text"
+        <h2>자막 입력</h2>
+        <textarea
           id="TextInput"
           placeholder="내용을 입력하세요"
           class="textInput"
-        />
+          cols="30"
+          rows="5"
+          style="font-family: auto"
+        ></textarea>
         <div class="buttonBox">
           <input type="submit" value="OK" id="textSubBtn" class="formButton" />
           <button type="button" id="cancleScriptBtn" class="formButton">
@@ -43,7 +46,7 @@
               type="number"
               name="fontSize"
               id="ConfigFontSize"
-              placeholder="ex) 56px"
+              placeholder="ex) 36 / 기본설정 55"
               class="textInput"
             />
           </div>
@@ -53,7 +56,7 @@
               type="number"
               name="fontWeight"
               id="ConfigFontWeight"
-              placeholder="ex) 600"
+              placeholder="ex) 600 / 기본설정 700"
               class="textInput"
             />
           </div>

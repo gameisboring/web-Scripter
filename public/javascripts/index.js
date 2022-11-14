@@ -73,13 +73,30 @@ raffleConfigForm.addEventListener('submit', async (e) => {
   for (var i in radio) {
     if (radio[i].checked) {
       data.useSound = radio[i].value
-      console.log(data.useSound)
     }
   }
+  // 난수 생성 범위
   data.range = document.getElementById('ConfigRaffleRange').value
+  // 난수 생성 갯수
   data.length = document.getElementById('ConfigRaffleLength').value
 
-  console.log(data)
+  if (data.range < data.length) {
+    alert('추첨 개수는 추첨 범위 내의 자연수의 개수보다 많을 수 없습니다')
+    document.getElementById('ConfigRaffleRange').value = ''
+    document.getElementById('ConfigRaffleLength').value = ''
+    return
+  } else if (data.range < 1) {
+    alert('추첨 범위는 1보다 작을 수 없습니다')
+    document.getElementById('ConfigRaffleRange').value = ''
+    document.getElementById('ConfigRaffleLength').value = ''
+    return
+  } else if (data.length < 0) {
+    alert('추첨 개수는 1개 이상이어야 합니다')
+    document.getElementById('ConfigRaffleRange').value = ''
+    document.getElementById('ConfigRaffleLength').value = ''
+    return
+  }
+
   await fetch('/raffle/config', {
     method: 'POST',
     headers: {

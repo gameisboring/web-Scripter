@@ -44,31 +44,15 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   /**
    * 중복없는 정수 배열을 반환합니다
-   * @returns numbers
+   * @returns randomNumbs
    */
   async function raffleNumExtracter() {
-    const config = await fetch('/raffle/config', { method: 'GET' })
+    const randomNumbs = await fetch('/raffle/numbers', { method: 'GET' })
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
         return data
       })
-    // const array = new Uint32Array(length)
-    // self.crypto.getRandomValues(array)
-
-    let numbers = []
-    let i = 0
-    while (i < (await config.numLength)) {
-      let n = Math.floor(Math.random() * (await config.numRange)) + 1
-      if (!sameNum(n)) {
-        numbers.push(n)
-        i++
-      }
-    }
-    function sameNum(n) {
-      return numbers.find((e) => e === n)
-    }
-    console.log(numbers)
-    return numbers
+    return randomNumbs
   }
 })

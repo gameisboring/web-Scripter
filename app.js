@@ -61,12 +61,11 @@ app.post('/script/data', (req, res) => {
       author: req.body.author,
       text: req.body.text,
     }).then(() => {
-      console.log(`데이터 입력 | ${author} / ${text}`)
+      console.log(`데이터 입력 | ${req.body.author} / ${req.body.text}`)
       res.json({ staus: 200, ok: true })
+      return
     })
   }
-
-  res.status(500).send('예측하지 못한 데이터')
 })
 
 /* GET 추첨 페이지 */
@@ -77,11 +76,27 @@ app.get('/raffle', (req, res) => {
 /**
  * GET 추첨 페이지 설정 가져오기
  */
-app.get('/raffle/config', async (req, res) => {
+app.get('/raffle/numbers', async (req, res) => {
   const data = await models.Raffle.findOne({
     order: [['updatedAt', 'DESC']],
   })
-  res.send(data)
+
+  console.log(data.dataValues.numLength)
+  let numbers = []
+  let i = 0
+  while (i < data.dataValues.numLength) {
+    console.log(i)
+    let n = Math.floor(Math.random() * data.dataValues.numRange) + 1
+    if (!sameNum(n)) {
+      numbers.push(n)
+      i++
+    }
+  }
+  function sameNum(n) {
+    return numbers.find((e) => e === n)
+  }
+  console.log(numbers)
+  res.send(numbers)
 })
 
 /**
