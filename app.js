@@ -74,7 +74,7 @@ app.get('/raffle', (req, res) => {
 })
 
 /**
- * GET 추첨 페이지 설정 가져오기
+ * GET 추첨 페이지 설정이용해서 번호 가져오기
  */
 app.get('/raffle/numbers', async (req, res) => {
   const data = await models.Raffle.findOne({
@@ -97,6 +97,17 @@ app.get('/raffle/numbers', async (req, res) => {
   }
   console.log(numbers)
   res.send(numbers)
+})
+
+/**
+ * GET 추첨 페이지 설정 가져오기
+ */
+app.get('/raffle/config', async (req, res) => {
+  const data = await models.Raffle.findOne({
+    order: [['updatedAt', 'DESC']],
+  })
+  console.log(data.dataValues)
+  res.send(data.dataValues)
 })
 
 /**

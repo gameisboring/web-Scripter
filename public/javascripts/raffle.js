@@ -4,17 +4,32 @@ const winnerText = document.querySelector('.textBox .winnerText')
 const winnerNumber = document.querySelector('.textBox .winnerNumber')
 const controlBox = document.querySelector('.ctrlBox')
 const retryBtn = document.querySelector('.ctrlBox .retryBtn')
-
+var fanfare1 = new Audio('audios/Fanfare1.mp3')
+var fanfare2 = new Audio('audios/Fanfare2.mp3')
+var tada = new Audio('audios/TaDa.mp3')
 var socket = io()
 
 var raffleTime = 0
 document.addEventListener('DOMContentLoaded', async () => {
   const numbers = await raffleNumExtracter()
+  const config = await fetch('/raffle/config', { method: 'GET' })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data)
+      return data
+    })
 
   raffleStartBtn.addEventListener('click', () => {
     console.log('button click')
     video.play()
     raffleStartBtn.style.opacity = 0
+    console.log(config)
+    if (config.useSound) {
+      fanfare1.play()
+      setTimeout(() => {
+        tada.play()
+      }, 9500)
+    }
 
     setTimeout(() => {
       raffleStartBtn.style.display = 'none'
